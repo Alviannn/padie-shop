@@ -1,5 +1,6 @@
 package com.github.alviannn.padieshop;
 
+import com.github.alviannn.padieshop.menus.AdminMenu;
 import com.github.alviannn.padieshop.menus.HomeMenu;
 import com.github.alviannn.padieshop.menus.UserMenu;
 import com.github.alviannn.padieshop.models.products.ClothProduct;
@@ -34,8 +35,6 @@ public class Main {
         PRODUCT_LIST.add(new FoodProduct("Milo", 8_000, "12 Des 2022"));
         PRODUCT_LIST.add(new ClothProduct("Jaket Anime", 130_000, "XL"));
         PRODUCT_LIST.add(new TechnologyProduct("Logitech", 520_000, "G231 Prodigy"));
-
-        CURRENT_USER = USER_LIST.get(0);
     }
 
     public Main() {
@@ -47,13 +46,14 @@ public class Main {
 
         HomeMenu homeMenu = new HomeMenu(this);
         UserMenu userMenu = new UserMenu(this);
+        AdminMenu adminMenu = new AdminMenu(this);
 
         while (true) {
             if (CURRENT_USER == null) {
                 homeMenu.showMenu();
             } else {
                 if (CURRENT_USER.getName().equals("admin")) {
-                    // todo: admin menu
+                    adminMenu.showMenu();
                 } else {
                     userMenu.showMenu();
                 }
