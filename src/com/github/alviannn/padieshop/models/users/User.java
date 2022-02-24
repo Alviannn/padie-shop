@@ -1,6 +1,7 @@
 package com.github.alviannn.padieshop.models.users;
 
 import com.github.alviannn.padieshop.models.Receipt;
+import com.github.alviannn.padieshop.models.products.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,10 @@ public class User {
      */
     private final List<Receipt> receipts;
     /**
+     * The user's current cart
+     */
+    private final List<Product> cart;
+    /**
      * The amount of money that the user has
      */
     private long balance;
@@ -26,6 +31,7 @@ public class User {
 
         this.balance = 1_000;
         this.receipts = new ArrayList<>();
+        this.cart = new ArrayList<>();
     }
 
     public String getName() {
@@ -46,6 +52,10 @@ public class User {
 
     public List<Receipt> getReceipts() {
         return receipts;
+    }
+
+    public List<Product> getCart() {
+        return cart;
     }
 
     public long getBalance() {
