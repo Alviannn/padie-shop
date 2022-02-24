@@ -16,17 +16,21 @@ public class Utils {
      * NOTE: this doesn't work on IDE (ex: IntellIJ, Eclipse)
      */
     public static void clearScreen() {
-        String osName = System.getenv("OS").toUpperCase();
-
-        try {
-            if (osName.contains("WIN")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                Runtime.getRuntime().exec("clear");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (int i = 0; i < 100; i++) {
+            System.out.println();
         }
+
+//        String osName = System.getenv("OS").toUpperCase();
+//
+//        try {
+//            if (osName.contains("WIN")) {
+//                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+//            } else {
+//                Runtime.getRuntime().exec("clear");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static long scanLong(String msg, String errorMsg) {
