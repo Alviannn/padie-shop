@@ -7,7 +7,7 @@ import com.github.alviannn.padieshop.models.products.ClothProduct;
 import com.github.alviannn.padieshop.models.products.FoodProduct;
 import com.github.alviannn.padieshop.models.products.Product;
 import com.github.alviannn.padieshop.models.products.TechnologyProduct;
-import com.github.alviannn.padieshop.models.user.User;
+import com.github.alviannn.padieshop.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
