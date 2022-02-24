@@ -62,10 +62,14 @@ public class HomeMenu extends AbstractMenu {
             }
 
             User found = null;
-            for (User user : main.USER_LIST) {
-                if (user.getName().equals(uname)) {
-                    found = user;
-                    break;
+            if (uname.equals("admin")) {
+                found = main.ADMIN;
+            } else {
+                for (User user : main.USER_LIST) {
+                    if (user.getName().equals(uname)) {
+                        found = user;
+                        break;
+                    }
                 }
             }
 
