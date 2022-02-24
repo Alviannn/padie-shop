@@ -134,9 +134,4 @@ public class BuyProductMenu extends AbstractMenu {
         Utils.scanEnter();
     }
 
-    public static void main(String[] args) {
-        Main main = new Main();
-        new BuyProductMenu(main).chooseProduct();
-    }
-
 }
