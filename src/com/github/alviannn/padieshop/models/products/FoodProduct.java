@@ -1,4 +1,4 @@
-package com.github.alviannn.padieshop.products;
+package com.github.alviannn.padieshop.models.products;
 
 public class FoodProduct extends Product {
 

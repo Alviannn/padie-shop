@@ -1,4 +1,4 @@
-package com.github.alviannn.padieshop;
+package com.github.alviannn.padieshop.models;
 
 import java.util.ArrayList;
 import java.util.List;

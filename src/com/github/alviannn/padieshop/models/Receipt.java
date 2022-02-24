@@ -1,6 +1,6 @@
-package com.github.alviannn.padieshop;
+package com.github.alviannn.padieshop.models;
 
-import com.github.alviannn.padieshop.products.Product;
+import com.github.alviannn.padieshop.models.products.Product;
 
 import java.util.ArrayList;
 import java.util.List;

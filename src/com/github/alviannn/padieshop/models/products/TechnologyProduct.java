@@ -1,4 +1,4 @@
-package com.github.alviannn.padieshop.products;
+package com.github.alviannn.padieshop.models.products;
 
 public class TechnologyProduct extends Product {
 
