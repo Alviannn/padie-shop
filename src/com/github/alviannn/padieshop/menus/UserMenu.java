@@ -1,7 +1,10 @@
 package com.github.alviannn.padieshop.menus;
 
 import com.github.alviannn.padieshop.Main;
+import com.github.alviannn.padieshop.models.Receipt;
 import com.github.alviannn.padieshop.utils.Utils;
+
+import java.util.List;
 
 public class UserMenu extends AbstractMenu {
 
@@ -49,6 +52,7 @@ public class UserMenu extends AbstractMenu {
                         }
                     }
                 case 2:
+                    this.showShoppingHistory();
                     return;
                 case 3:
                     this.addBalance();
@@ -64,6 +68,52 @@ public class UserMenu extends AbstractMenu {
                     break;
             }
         }
+    }
+
+    private void showShoppingHistory() {
+        Utils.clearScreen();
+
+        List<Receipt> receipts = main.CURRENT_USER.getReceipts();
+
+        String lineWithSeparator = "+-----+----------+----------------------+";
+
+        System.out.println(lineWithSeparator);
+        System.out.printf("| %-3s | %-5s | %-20s |\n", "No.", "ID Struk", "Total Harga");
+        System.out.println(lineWithSeparator);
+
+        int count = 0;
+        for (Receipt receipt : receipts) {
+            count++;
+            System.out.printf("| %3d | %-5s | %-20s |\n",
+                    count,
+                    "#" + receipt.getId(),
+                    Utils.formatPrice(receipt.getTotalPrice()));
+        }
+        System.out.println(lineWithSeparator);
+
+        Receipt receipt;
+        while (true) {
+            String errorMessage = "Pilihlah struk yang tertera diantara 1-" + receipts.size() + "!";
+            int idx = (int) Utils.scanLong(
+                    "Struk yang dipilih [1-" + receipts.size() + " | '0' untuk kembali]: ",
+                    errorMessage);
+
+            if (idx == 0) {
+                return;
+            }
+            if (idx < 0 || idx > receipts.size()) {
+                System.out.println(errorMessage);
+                continue;
+            }
+
+            receipt = receipts.get(idx - 1);
+            break;
+        }
+
+        Utils.clearScreen();
+        receipt.printFormatted();
+
+        Utils.scanEnter();
     }
 
     private void addBalance() {
