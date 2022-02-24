@@ -5,8 +5,12 @@ import com.github.alviannn.padieshop.utils.Utils;
 
 public class UserMenu extends AbstractMenu {
 
+    private final BuyProductMenu buyProductMenu;
+
     public UserMenu(Main main) {
         super(main);
+
+        this.buyProductMenu = new BuyProductMenu(main);
     }
 
     @Override
@@ -34,7 +38,16 @@ public class UserMenu extends AbstractMenu {
 
             switch (choice) {
                 case 1:
-                    return;
+                    while (true) {
+                        try {
+                            buyProductMenu.showMenu();
+                        } catch (RuntimeException e) {
+                            // The user has finished using this menu
+                            if (e.getMessage().equals("Finished")) {
+                                return;
+                            }
+                        }
+                    }
                 case 2:
                     return;
                 case 3:
