@@ -6,10 +6,13 @@ import java.util.Scanner;
 public class Utils {
 
     public final static Scanner SCANNER = new Scanner(System.in);
+    public final static String APP_HEADER =
+            "Padie Shop\n" +
+            "--------------------------------\n";
 
     /**
      * Clears the console screen that works on any OS.
-     *
+     * <p>
      * NOTE: this doesn't work on IDE (ex: IntellIJ, Eclipse)
      */
     public static void clearScreen() {
@@ -69,7 +72,7 @@ public class Utils {
 
     /**
      * Determines the {@param str} is a combination of alphabet and numeric.
-     *
+     * <p>
      * Alphabet check is ignored since it's there by default.
      */
     public static boolean isAlphaNum(String str) {

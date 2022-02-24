@@ -187,6 +187,7 @@ public class HomeMenu extends AbstractMenu {
         Utils.clearScreen();
 
         System.out.println(
+                Utils.APP_HEADER +
                 "1. Login\n" +
                 "2. Register\n" +
                 "0. Exit");
