@@ -81,13 +81,13 @@ public class UserMenu extends AbstractMenu {
            String lineWithSeparator = "+-----+----------+----------------------+";
 
            System.out.println(lineWithSeparator);
-           System.out.printf("| %-3s | %-5s | %-20s |\n", "No.", "ID Struk", "Total Harga");
+           System.out.printf("| %-3s | %-8s | %-20s |\n", "No.", "ID Struk", "Total Harga");
            System.out.println(lineWithSeparator);
 
            int count = 0;
            for (Receipt receipt : receipts) {
                count++;
-               System.out.printf("| %3d | %-5s | %-20s |\n",
+               System.out.printf("| %3d | %-8s | %-20s |\n",
                        count,
                        "#" + receipt.getId(),
                        Utils.formatPrice(receipt.getTotalPrice()));
