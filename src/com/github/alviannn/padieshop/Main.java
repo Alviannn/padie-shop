@@ -110,8 +110,12 @@ public class Main {
         String username, fullName, email, password;
 
         while (true) {
-            System.out.print("Username: ");
+            System.out.print("Username ['0' untuk kembali]: ");
             username = scan.nextLine();
+
+            if (username.equals("0")) {
+                return;
+            }
 
             int len = username.length();
             if (len < 3 || len > 16) {
@@ -136,8 +140,12 @@ public class Main {
         }
 
         while (true) {
-            System.out.print("Nama panjang: ");
+            System.out.print("Nama panjang ['0' untuk kembali]: ");
             fullName = scan.nextLine();
+
+            if (fullName.equals("0")) {
+                return;
+            }
 
             int len = fullName.length();
             if (len < 3 || len > 16) {
@@ -154,8 +162,12 @@ public class Main {
         }
 
         while (true) {
-            System.out.print("Email address: ");
+            System.out.print("Email address ['0' untuk kembali]: ");
             email = scan.nextLine();
+
+            if (email.equals("0")) {
+                return;
+            }
 
             int len = email.length();
             if (len < 5 || len > 16) {
@@ -188,8 +200,12 @@ public class Main {
         }
 
         while (true) {
-            System.out.print("Password: ");
+            System.out.print("Password ['0' untuk kembali]: ");
             password = scan.nextLine();
+
+            if (password.equals("0")) {
+                return;
+            }
 
             int len = password.length();
             if (len < 8 || len > 40) {
