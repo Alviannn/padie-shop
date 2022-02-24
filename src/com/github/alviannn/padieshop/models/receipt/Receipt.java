@@ -55,11 +55,11 @@ public class Receipt {
                     count, product.getName(), Utils.formatPrice(product.getPrice()));
 
             if (product instanceof FoodProduct) {
-                System.out.println("   Expire date: " + ((FoodProduct) product).getExpireDate());
+                System.out.println("   - Expire date: " + ((FoodProduct) product).getExpireDate());
             } else if (product instanceof ClothProduct) {
-                System.out.println("   Size: " + ((ClothProduct) product).getSize());
+                System.out.println("   - Size: " + ((ClothProduct) product).getSize());
             } else if (product instanceof TechnologyProduct) {
-                System.out.println("   Version: " + ((TechnologyProduct) product).getVersion());
+                System.out.println("   - Version: " + ((TechnologyProduct) product).getVersion());
             }
         }
 
