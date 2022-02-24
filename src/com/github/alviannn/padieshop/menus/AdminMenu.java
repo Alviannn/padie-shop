@@ -34,6 +34,7 @@ public class AdminMenu extends AbstractMenu {
 
             if (choice == 0) {
                 main.CURRENT_USER = null;
+                return;
             }
 
             if (choice < 0 || choice > 3) {
@@ -126,6 +127,8 @@ public class AdminMenu extends AbstractMenu {
 
         main.PRODUCT_LIST.add(product);
         System.out.println("Produk telah ditambahkan!");
+
+        Utils.scanEnter();
     }
 
 }
