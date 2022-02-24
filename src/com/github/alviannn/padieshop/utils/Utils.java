@@ -1,5 +1,6 @@
 package com.github.alviannn.padieshop.utils;
 
+import java.text.NumberFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -94,6 +95,15 @@ public class Utils {
         }
 
         return false;
+    }
+
+    public static String formatPrice(long price) {
+        NumberFormat formatter = NumberFormat.getInstance();
+
+        String formattedPrice = formatter.format(price)
+                .replace(",", ".");
+
+        return "Rp " + formattedPrice + ",00";
     }
 
 }
