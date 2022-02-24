@@ -117,6 +117,8 @@ public class UserMenu extends AbstractMenu {
     }
 
     private void addBalance() {
+        Utils.clearScreen();
+
         System.out.print(Utils.APP_HEADER);
 
         while (true) {
@@ -135,8 +137,9 @@ public class UserMenu extends AbstractMenu {
             long currentBalance = main.CURRENT_USER.getBalance();
             main.CURRENT_USER.setBalance(currentBalance + additionBalance);
 
-            System.out.println("Nominal uang " + Utils.formatPrice(currentBalance) + " telah ditambahkan!");
+            System.out.println("Nominal uang " + Utils.formatPrice(additionBalance) + " telah ditambahkan!");
             Utils.scanEnter();
+            break;
         }
     }
 
