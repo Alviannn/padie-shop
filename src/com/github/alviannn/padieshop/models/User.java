@@ -1,6 +1,5 @@
 package com.github.alviannn.padieshop.models;
 
-import com.github.alviannn.padieshop.models.Receipt;
 import com.github.alviannn.padieshop.models.products.Product;
 
 import java.util.ArrayList;
