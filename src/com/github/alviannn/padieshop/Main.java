@@ -1,6 +1,7 @@
 package com.github.alviannn.padieshop;
 
 import com.github.alviannn.padieshop.menus.HomeMenu;
+import com.github.alviannn.padieshop.menus.UserMenu;
 import com.github.alviannn.padieshop.models.products.Product;
 import com.github.alviannn.padieshop.models.users.User;
 
@@ -27,6 +28,7 @@ public class Main {
         this.ADMIN = new User("admin", "", "", "admin123");
 
         HomeMenu homeMenu = new HomeMenu(this);
+        UserMenu userMenu = new UserMenu(this);
 
         while (true) {
             if (CURRENT_USER == null) {
@@ -35,7 +37,7 @@ public class Main {
                 if (CURRENT_USER.getName().equals("admin")) {
                     // todo: admin menu
                 } else {
-                    // todo: user menu
+                    userMenu.showMenu();
                 }
             }
         }

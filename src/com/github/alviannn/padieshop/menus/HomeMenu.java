@@ -84,10 +84,12 @@ public class HomeMenu extends AbstractMenu {
             }
 
             main.CURRENT_USER = found;
+
+            System.out.println("Berhasil login!");
+            Utils.scanEnter();
+
             break;
         }
-
-        // todo: go to dashboard
     }
 
     private void showRegisterMenu() {
