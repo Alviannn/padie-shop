@@ -75,43 +75,47 @@ public class UserMenu extends AbstractMenu {
 
         List<Receipt> receipts = main.CURRENT_USER.getReceipts();
 
-        String lineWithSeparator = "+-----+----------+----------------------+";
+       if (receipts.isEmpty()) {
+           System.out.println("User belum pernah melakukan pembelian pada Padie Shop!");
+       } else {
+           String lineWithSeparator = "+-----+----------+----------------------+";
 
-        System.out.println(lineWithSeparator);
-        System.out.printf("| %-3s | %-5s | %-20s |\n", "No.", "ID Struk", "Total Harga");
-        System.out.println(lineWithSeparator);
+           System.out.println(lineWithSeparator);
+           System.out.printf("| %-3s | %-5s | %-20s |\n", "No.", "ID Struk", "Total Harga");
+           System.out.println(lineWithSeparator);
 
-        int count = 0;
-        for (Receipt receipt : receipts) {
-            count++;
-            System.out.printf("| %3d | %-5s | %-20s |\n",
-                    count,
-                    "#" + receipt.getId(),
-                    Utils.formatPrice(receipt.getTotalPrice()));
-        }
-        System.out.println(lineWithSeparator);
+           int count = 0;
+           for (Receipt receipt : receipts) {
+               count++;
+               System.out.printf("| %3d | %-5s | %-20s |\n",
+                       count,
+                       "#" + receipt.getId(),
+                       Utils.formatPrice(receipt.getTotalPrice()));
+           }
+           System.out.println(lineWithSeparator);
 
-        Receipt receipt;
-        while (true) {
-            String errorMessage = "Pilihlah struk yang tertera diantara 1-" + receipts.size() + "!";
-            int idx = (int) Utils.scanLong(
-                    "Struk yang dipilih [1-" + receipts.size() + " | '0' untuk kembali]: ",
-                    errorMessage);
+           Receipt receipt;
+           while (true) {
+               String errorMessage = "Pilihlah struk yang tertera diantara 1-" + receipts.size() + "!";
+               int idx = (int) Utils.scanLong(
+                       "Struk yang dipilih [1-" + receipts.size() + " | '0' untuk kembali]: ",
+                       errorMessage);
 
-            if (idx == 0) {
-                return;
-            }
-            if (idx < 0 || idx > receipts.size()) {
-                System.out.println(errorMessage);
-                continue;
-            }
+               if (idx == 0) {
+                   return;
+               }
+               if (idx < 0 || idx > receipts.size()) {
+                   System.out.println(errorMessage);
+                   continue;
+               }
 
-            receipt = receipts.get(idx - 1);
-            break;
-        }
+               receipt = receipts.get(idx - 1);
+               break;
+           }
 
-        Utils.clearScreen();
-        receipt.printFormatted();
+           Utils.clearScreen();
+           receipt.printFormatted();
+       }
 
         Utils.scanEnter();
     }
