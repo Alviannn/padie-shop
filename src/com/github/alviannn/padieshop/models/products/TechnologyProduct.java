@@ -5,7 +5,7 @@ public class TechnologyProduct extends Product {
     private final String version;
 
     public TechnologyProduct(String name, long price, String version) {
-        super(name, price + ((price * Product.TECH_PERCENT) / 100));
+        super(name + " [T]", price + ((price * Product.TECH_PERCENT) / 100));
         this.version = version;
     }
 
