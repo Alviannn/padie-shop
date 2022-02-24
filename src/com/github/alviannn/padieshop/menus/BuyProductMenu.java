@@ -49,45 +49,51 @@ public class BuyProductMenu extends AbstractMenu {
     private void chooseProduct() {
         Utils.clearScreen();
 
-        String lineWithSeparator = "+-----+------------------+----------------------+";
+        List<Product> products = main.PRODUCT_LIST;
+        if (products.isEmpty()) {
+            System.out.println("Tidak ada produk yang tersedia!");
+        } else {
+            String lineWithSeparator = "+-----+------------------+----------------------+";
 
-        System.out.println(lineWithSeparator);
-        System.out.printf("| %-3s | %-16s | %-20s |\n", "No.", "Nama Produk", "Harga Produk");
-        System.out.println(lineWithSeparator);
+            System.out.println(lineWithSeparator);
+            System.out.printf("| %-3s | %-16s | %-20s |\n", "No.", "Nama Produk", "Harga Produk");
+            System.out.println(lineWithSeparator);
 
-        int count = 0;
-        for (Product product : main.PRODUCT_LIST) {
-            count++;
+            int count = 0;
+            for (Product product : products) {
+                count++;
 
-            System.out.printf("| %3d | %-16s | %-20s |\n",
-                    count, product.getName(), Utils.formatPrice(product.getPrice()));
-        }
-
-        System.out.println(lineWithSeparator);
-        Product chosenProduct;
-
-        while (true) {
-            String errorMessage = "Pilihlah produk dengan antara nomor 1-" + main.PRODUCT_LIST.size() + ".";
-
-            int idx = (int) Utils.scanLong(
-                    "No. produk yang dipilih [1-" + main.PRODUCT_LIST.size() + " | '0' untuk kembali]: ",
-                    errorMessage);
-
-            if (idx == 0) {
-                return;
-            }
-            if (idx < 0 || idx > main.PRODUCT_LIST.size()) {
-                System.out.println(errorMessage);
-                continue;
+                System.out.printf("| %3d | %-16s | %-20s |\n",
+                        count, product.getName(), Utils.formatPrice(product.getPrice()));
             }
 
-            chosenProduct = main.PRODUCT_LIST.get(idx - 1);
-            break;
+            System.out.println(lineWithSeparator);
+            Product chosenProduct;
+
+            while (true) {
+                String errorMessage = "Pilihlah produk dengan antara nomor 1-" + products.size() + ".";
+
+                int idx = (int) Utils.scanLong(
+                        "No. produk yang dipilih [1-" + products.size() + " | '0' untuk kembali]: ",
+                        errorMessage);
+
+                if (idx == 0) {
+                    return;
+                }
+                if (idx < 0 || idx > products.size()) {
+                    System.out.println(errorMessage);
+                    continue;
+                }
+
+                chosenProduct = products.get(idx - 1);
+                break;
+            }
+
+            main.CURRENT_USER.getCart().add(chosenProduct);
+
+            System.out.println("Produk terpilih telah ditambahkan pada keranjang!");
         }
 
-        main.CURRENT_USER.getCart().add(chosenProduct);
-
-        System.out.println("Produk terpilih telah ditambahkan pada keranjang!");
         Utils.scanEnter();
     }
 
@@ -97,28 +103,32 @@ public class BuyProductMenu extends AbstractMenu {
         User user = main.CURRENT_USER;
         List<Product> cart = user.getCart();
 
-        long currentBalance = user.getBalance();
-        long totalPrice = 0;
-
-        for (Product product : cart) {
-            totalPrice += product.getPrice();
-        }
-
-        if (currentBalance < totalPrice) {
-            System.out.println("Anda tidak memiliki uang yang cukup!");
+        if (cart.isEmpty()) {
+            System.out.println("User tidak memiliki barang didalam keranjangnya!");
         } else {
-            Receipt.CURRENT_ID++;
+            long currentBalance = user.getBalance();
+            long totalPrice = 0;
 
-            Receipt receipt = new Receipt(Receipt.CURRENT_ID);
-            receipt.getProducts().addAll(cart);
-            cart.clear();
+            for (Product product : cart) {
+                totalPrice += product.getPrice();
+            }
 
-            user.setBalance(currentBalance - totalPrice);
+            if (currentBalance < totalPrice) {
+                System.out.println("Anda tidak memiliki uang yang cukup!");
+            } else {
+                Receipt.CURRENT_ID++;
 
-            receipt.printFormatted();
-            System.out.println();
+                Receipt receipt = new Receipt(Receipt.CURRENT_ID);
+                receipt.getProducts().addAll(cart);
+                cart.clear();
 
-            System.out.println("Produk yang terdapat pada keranjang telah dibeli!");
+                user.setBalance(currentBalance - totalPrice);
+
+                receipt.printFormatted();
+                System.out.println();
+
+                System.out.println("Produk yang terdapat pada keranjang telah dibeli!");
+            }
         }
 
         Utils.scanEnter();
