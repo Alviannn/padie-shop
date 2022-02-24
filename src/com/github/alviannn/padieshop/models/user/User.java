@@ -1,6 +1,6 @@
-package com.github.alviannn.padieshop.models.users;
+package com.github.alviannn.padieshop.models.user;
 
-import com.github.alviannn.padieshop.models.Receipt;
+import com.github.alviannn.padieshop.models.receipt.Receipt;
 import com.github.alviannn.padieshop.models.products.Product;
 
 import java.util.ArrayList;

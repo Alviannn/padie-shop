@@ -1,4 +1,4 @@
-package com.github.alviannn.padieshop.models;
+package com.github.alviannn.padieshop.models.receipt;
 
 import com.github.alviannn.padieshop.models.products.ClothProduct;
 import com.github.alviannn.padieshop.models.products.FoodProduct;

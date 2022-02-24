@@ -1,7 +1,7 @@
 package com.github.alviannn.padieshop.menus;
 
 import com.github.alviannn.padieshop.Main;
-import com.github.alviannn.padieshop.models.Receipt;
+import com.github.alviannn.padieshop.models.receipt.Receipt;
 import com.github.alviannn.padieshop.utils.Utils;
 
 import java.util.List;
