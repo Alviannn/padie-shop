@@ -53,17 +53,17 @@ public class BuyProductMenu extends AbstractMenu {
         if (products.isEmpty()) {
             System.out.println("Tidak ada produk yang tersedia!");
         } else {
-            String lineWithSeparator = "+-----+------------------+----------------------+";
+            String lineWithSeparator = "+-----+----------------------+----------------------+";
 
             System.out.println(lineWithSeparator);
-            System.out.printf("| %-3s | %-16s | %-20s |\n", "No.", "Nama Produk", "Harga Produk");
+            System.out.printf("| %-3s | %-20s | %-20s |\n", "No.", "Nama Produk", "Harga Produk");
             System.out.println(lineWithSeparator);
 
             int count = 0;
             for (Product product : products) {
                 count++;
 
-                System.out.printf("| %3d | %-16s | %-20s |\n",
+                System.out.printf("| %3d | %-20s | %-20s |\n",
                         count, product.getName(), Utils.formatPrice(product.getPrice()));
             }
 
