@@ -22,15 +22,11 @@ public class BuyProductMenu extends AbstractMenu {
                 Utils.APP_HEADER +
                 "1. Pilih produk\n" +
                 "2. Checkout\n" +
-                "3. Kembali");
+                "0. Kembali");
 
         while (true) {
             String errorMessage = "Input harus diantara 0-3!\n";
             int choice = (int) Utils.scanLong(">> ", errorMessage);
-
-            if (choice == 0) {
-                System.exit(0);
-            }
 
             switch (choice) {
                 case 1:
@@ -39,10 +35,10 @@ public class BuyProductMenu extends AbstractMenu {
                 case 2:
                     this.checkoutCart();
                     return;
-                case 3:
+                case 0:
                     // Throw an error that will be caught by the UserMenu,
                     // this is to tell the user is coming back to the UserMenu
-                    throw new RuntimeException("Finished!");
+                    throw new RuntimeException("Finished");
                 default:
                     System.out.print(errorMessage);
                     break;
