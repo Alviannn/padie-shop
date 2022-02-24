@@ -11,6 +11,10 @@ public class User {
      * it acts as a shopping history.
      */
     private final List<Receipt> receipts;
+    /**
+     * The amount of money that the user has
+     */
+    private long balance;
 
     public User(String name, String fullName, String emailAddress, String password) {
         this.name = name;
@@ -18,6 +22,7 @@ public class User {
         this.emailAddress = emailAddress;
         this.password = password;
 
+        this.balance = 1_000;
         this.receipts = new ArrayList<>();
     }
 
