@@ -7,6 +7,11 @@ public class Utils {
 
     public final static Scanner SCANNER = new Scanner(System.in);
 
+    /**
+     * Clears the console screen that works on any OS.
+     *
+     * NOTE: this doesn't work on IDE (ex: IntellIJ, Eclipse)
+     */
     public static void clearScreen() {
         String osName = System.getenv("OS").toUpperCase();
 
@@ -39,6 +44,9 @@ public class Utils {
         return result;
     }
 
+    /**
+     * Creates the effect of requiring the user to press enter to continue the flow.
+     */
     public static void scanEnter() {
         System.out.print("Press enter to continue...");
         SCANNER.nextLine();
