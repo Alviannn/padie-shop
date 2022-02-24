@@ -69,11 +69,19 @@ public class Main {
             Utils.clearScreen();
 
             String uname, pwd;
-            System.out.print("Username: ");
-            uname = scan.nextLine();
+            System.out.print("Username ['0' untuk kembali]: ");
 
-            System.out.print("Password: ");
+            uname = scan.nextLine();
+            if (uname.equals("0")) {
+                return;
+            }
+
+            System.out.print("Password ['0' untuk kembali]: ");
+
             pwd = scan.nextLine();
+            if (pwd.equals("0")) {
+                return;
+            }
 
             User found = null;
             for (User user : USER_LIST) {
