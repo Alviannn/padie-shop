@@ -1,6 +1,7 @@
 package com.github.alviannn.padieshop.menus;
 
 import com.github.alviannn.padieshop.Main;
+import com.github.alviannn.padieshop.models.Receipt;
 import com.github.alviannn.padieshop.models.products.Product;
 import com.github.alviannn.padieshop.models.users.User;
 import com.github.alviannn.padieshop.utils.Utils;
@@ -110,7 +111,18 @@ public class BuyProductMenu extends AbstractMenu {
         if (currentBalance < totalPrice) {
             System.out.println("Anda tidak memiliki uang yang cukup!");
         } else {
-            // todo: print receipt
+            Receipt.CURRENT_ID++;
+
+            Receipt receipt = new Receipt(Receipt.CURRENT_ID);
+            receipt.getProducts().addAll(cart);
+            cart.clear();
+
+            user.setBalance(currentBalance - totalPrice);
+
+            receipt.printFormatted();
+            System.out.println();
+
+            System.out.println("Produk yang terdapat pada keranjang telah dibeli!");
         }
 
         Utils.scanEnter();
