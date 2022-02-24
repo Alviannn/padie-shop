@@ -10,6 +10,38 @@ public class HomeMenu extends AbstractMenu {
         super(main);
     }
 
+    @Override
+    public void showMenu() {
+        Utils.clearScreen();
+
+        System.out.println(
+                Utils.APP_HEADER +
+                "1. Login\n" +
+                "2. Register\n" +
+                "0. Exit");
+
+        while (true) {
+            String errorMessage = "Input harus diantara 0-2!\n";
+            int choice = (int) Utils.scanLong(">> ", errorMessage);
+
+            if (choice == 0) {
+                System.exit(0);
+            }
+
+            switch (choice) {
+                case 1:
+                    this.showLoginMenu();
+                    return;
+                case 2:
+                    this.showRegisterMenu();
+                    return;
+                default:
+                    System.out.print(errorMessage);
+                    break;
+            }
+        }
+    }
+
     private void showLoginMenu() {
         while (true) {
             Utils.clearScreen();
@@ -124,7 +156,7 @@ public class HomeMenu extends AbstractMenu {
             }
 
             int len = email.length();
-            if (len < 5 || len > 16) {
+            if (len < 5 || len > 30) {
                 System.out.println("Email harus memiliki panjang >= 3 dan <= 16.");
                 continue;
             }
@@ -180,38 +212,6 @@ public class HomeMenu extends AbstractMenu {
 
         System.out.println("User berhasil terdaftarkan!");
         Utils.scanEnter();
-    }
-
-    @Override
-    public void showMenu() {
-        Utils.clearScreen();
-
-        System.out.println(
-                Utils.APP_HEADER +
-                "1. Login\n" +
-                "2. Register\n" +
-                "0. Exit");
-
-        while (true) {
-            String errorMessage = "Input harus diantara 0-2!\n";
-            int choice = (int) Utils.scanLong(">> ", errorMessage);
-
-            if (choice == 0) {
-                System.exit(0);
-            }
-
-            switch (choice) {
-                case 1:
-                    this.showLoginMenu();
-                    break;
-                case 2:
-                    this.showRegisterMenu();
-                    break;
-                default:
-                    System.out.print(errorMessage);
-                    break;
-            }
-        }
     }
 
 }

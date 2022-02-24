@@ -27,7 +27,18 @@ public class Main {
         this.ADMIN = new User("admin", "", "", "admin123");
 
         HomeMenu homeMenu = new HomeMenu(this);
-        homeMenu.showMenu();
+
+        while (true) {
+            if (CURRENT_USER == null) {
+                homeMenu.showMenu();
+            } else {
+                if (CURRENT_USER.getName().equals("admin")) {
+                    // todo: admin menu
+                } else {
+                    // todo: user menu
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
