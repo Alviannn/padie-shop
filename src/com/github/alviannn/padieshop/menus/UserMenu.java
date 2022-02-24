@@ -3,8 +3,6 @@ package com.github.alviannn.padieshop.menus;
 import com.github.alviannn.padieshop.Main;
 import com.github.alviannn.padieshop.utils.Utils;
 
-import java.text.NumberFormat;
-
 public class UserMenu extends AbstractMenu {
 
     public UserMenu(Main main) {
@@ -71,14 +69,10 @@ public class UserMenu extends AbstractMenu {
                 continue;
             }
 
-            NumberFormat formatter = NumberFormat.getInstance();
-
             long currentBalance = main.CURRENT_USER.getBalance();
             main.CURRENT_USER.setBalance(currentBalance + additionBalance);
 
-            String formattedBalance = formatter.format(additionBalance).replace(",", ".");
-
-            System.out.println("Nominal uang Rp " + formattedBalance + ",00 telah ditambahkan!");
+            System.out.println("Nominal uang " + Utils.formatPrice(currentBalance) + " telah ditambahkan!");
             Utils.scanEnter();
         }
     }
@@ -86,15 +80,11 @@ public class UserMenu extends AbstractMenu {
     private void showCurrentBalance() {
         Utils.clearScreen();
 
-        NumberFormat formatter = NumberFormat.getInstance();
-
         long currentBalance = main.CURRENT_USER.getBalance();
-        String formattedBalance = formatter.format(currentBalance).replace(",", ".");
-
         System.out.println(
                 Utils.APP_HEADER +
                 "Uang yang anda miliki pada saat ini adalah:");
-        System.out.println("Rp " + formattedBalance + ",00");
+        System.out.println(Utils.formatPrice(currentBalance));
 
         Utils.scanEnter();
     }
