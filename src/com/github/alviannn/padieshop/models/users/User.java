@@ -1,4 +1,6 @@
-package com.github.alviannn.padieshop.models;
+package com.github.alviannn.padieshop.models.users;
+
+import com.github.alviannn.padieshop.models.Receipt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +46,14 @@ public class User {
 
     public List<Receipt> getReceipts() {
         return receipts;
+    }
+
+    public long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(long balance) {
+        this.balance = balance;
     }
 
 }
