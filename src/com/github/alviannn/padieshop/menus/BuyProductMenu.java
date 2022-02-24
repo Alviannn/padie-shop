@@ -122,6 +122,7 @@ public class BuyProductMenu extends AbstractMenu {
                 receipt.getProducts().addAll(cart);
                 cart.clear();
 
+                user.getReceipts().add(receipt);
                 user.setBalance(currentBalance - totalPrice);
 
                 receipt.printFormatted();
